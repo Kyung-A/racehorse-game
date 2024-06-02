@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경주말 게임</title>
+    <link href="../reset.css" rel="stylesheet" />
+    <link href="./index.css" rel="stylesheet" />
+</head>
+
+<body>
+    <main>
+        <header>
+            <button type="button" class="pixel start-btn">경기 시작하기</button>
+        </header>
+        <div class="horses-wrapper">
+            <ul class="horses">
+                <li class="horse" aria-label="1번 말">
+                    <div>
+                        <img src="./assets/horse.png" alt="1번 말" />
+                    </div>
+                    <p class="pixel horse-name">
+                        1번 말
+                    </p>
+                </li>
+                <li class="horse" aria-label="2번 말">
+                    <div>
+                        <img src="./assets/horse.png" alt="2번 말" />
+                    </div>
+                    <p class="pixel horse-name">
+                        2번 말
+                    </p>
+                </li>
+                <li class="horse" aria-label="3번 말">
+                    <div>
+                        <img src="./assets/horse.png" alt="3번 말" />
+                    </div>
+                    <p class="pixel horse-name">
+                        3번 말
+                    </p>
+                </li>
+                <li class="horse" aria-label="4번 말">
+                    <div>
+                        <img src="./assets/horse.png" alt="4번 말" />
+                    </div>
+                    <p class="pixel horse-name">
+                        4번 말
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div id="count"></div>
+    </main>
+
+    <dialog id="start-dialog">
+        <div class="pixel">
+            <header>
+                <h2>말을 선택해주세요!</h2>
+                <button type="button" id="dialog-close">닫기</button>
+            </header>
+            <div class="horses-select-wrapper">
+                <ul class="horses-select">
+                    <li class="horse horse-1" aria-label="1번 말">
+                        <img src="./assets/horse.png" alt="1번 말" />
+                        <span class="pixel horse-name">1번 말</span>
+                    </li>
+                    <li class="horse horse-2" aria-label="2번 말">
+                        <img src="./assets/horse.png" alt="2번 말" />
+                        <span class="pixel horse-name">2번 말</span>
+                    </li>
+                    <li class="horse horse-3" aria-label="3번 말">
+                        <img src="./assets/horse.png" alt="3번 말" />
+                        <span class="pixel horse-name">3번 말</span>
+                    </li>
+                    <li class="horse horse-4" aria-label="4번 말">
+                        <img src="./assets/horse.png" alt="4번 말" />
+                        <span class="pixel horse-name">4번 말</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="dialog-btn-wrapper">
+                <button id="dialog-complete" class="pixel dialog-complete">선택 완료</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="ranking-dialog">
+        <div class="pixel">
+            <header>
+                <h2></h2>
+            </header>
+            <ul id="ranking-list">
+
+            </ul>
+            <div class="dialog-btn-wrapper">
+                <button id="ranking-dialog-complete" class="pixel dialog-complete">확인</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>

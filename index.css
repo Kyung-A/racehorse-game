@@ -1,0 +1,338 @@
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'DungGeunMo';
+}
+
+::backdrop {
+    width: 85vw;
+    margin: 0px auto;
+    height: 100vh;
+    background-color: #0000005e;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+dialog[open] {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px auto;
+    max-width: initial;
+    max-height: initial;
+}
+
+html,
+body {
+    width: 85vw;
+    height: 100vh;
+    margin: 0px auto;
+    overflow:hidden;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url("./assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.pixel {
+    position: relative;
+    display: inline-block;
+    margin: 0 15px 15px 0;
+    border-image-slice: 2;
+    border-image-width: 1;
+    border-image-outset: 0;
+    border-style: solid;
+    border-width: 4px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+/* 말 스타일링 */
+.horses-wrapper {
+    width: 100%;
+    height: 500px;
+    min-height: 500px;
+    position: relative;
+    margin-top: auto;
+    padding: 0px 20px;
+    box-sizing: border-box;
+
+    .horses {
+        width: 100%;
+        height: 100%;
+        padding-top: 60px;
+    }
+}
+
+
+.horses-wrapper .horse {
+    position: relative;
+    width: 90px;
+    margin: 10px 0px;
+
+    & img {
+        width: 100%;
+    }
+
+    & .horse-name {
+        width: 50px;
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        margin-left: -25px;
+        padding: 2px 0px;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: center;
+        border-color: #5b8423;
+        border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%235b8423' /></svg>");
+        background-color: #92cc41;
+        &::after {
+            -webkit-box-shadow: inset -4px -4px #77ac2e;
+            box-shadow: inset -4px -4px #77ac2e;
+        }
+    }
+}
+
+/* 헤더 */
+header {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.start-btn {
+    color: #fff;
+    padding: 12px 18px;
+    border-color: #0c639c;
+    background-color: #209cee;
+    border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%230c639c' /></svg>");
+    font-size: 18px;
+    cursor: pointer;
+
+    &::after {
+        -webkit-box-shadow: inset -4px -4px #1081cb;
+        box-shadow: inset -4px -4px #1081cb;
+
+    }
+}
+
+@supports (border-image-source: none) {
+    .pixel {
+        border-radius: 14px;
+    }
+}
+
+/* 다이얼로그 */
+dialog[open] {
+    & > div {
+        width: 500px;
+        padding: 30px 30px 0px 30px;
+        border-color: #000000;
+        background-color: #222222;
+        border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%23000000' /></svg>");
+        box-sizing: border-box;
+
+        &::after {
+            -webkit-box-shadow: inset -4px -4px #000000;
+            box-shadow: inset -4px -4px #000000;
+        }
+    }
+
+    & header {
+        padding: 0px;
+        position: relative;
+        z-index: 10;
+
+        h2 {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        button {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background-color: transparent;
+            border: 0px;
+            color: #ccc;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    }
+}
+
+.horses-select-wrapper {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+
+    & .horses-select {
+        display: flex;
+        align-items: center;
+
+        & .horse {
+            width: 25%;
+            padding: 15px;
+            box-sizing: border-box;
+            position: relative;
+            cursor: pointer;
+
+            & img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+.horses-select-wrapper .horse-name {
+    display: inline-block;
+    position: absolute;
+    width: 50px;
+    bottom: -30px;
+    left: 50%;
+    margin-left: -25px;
+    padding: 4px 0px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    border-color: #a88f06;
+    border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%23a88f06' /></svg>");
+    background-color: #f7d51d;
+
+    &::after {
+        -webkit-box-shadow: inset -4px -4px #d9b908;
+        box-shadow: inset -4px -4px #d9b908;
+    }
+}
+
+& .dialog-btn-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+
+    & .dialog-complete {
+        padding: 10px;
+        margin: 50px 0px 30px 0px;
+        border-color: #cccccc;
+        border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%23cccccc' /></svg>");
+        background-color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+
+        &::after {
+            -webkit-box-shadow: inset -4px -4px #e6e5e5;
+            box-shadow: inset -4px -4px #e6e5e5;
+        }
+    }
+}
+
+#count {
+    width: 85vw;
+    height: 100%;
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 120px;
+    font-style: italic;
+    color: #fff;
+    background-color: #00000050;
+    margin: 0 auto;
+}
+
+.disabled-btn {
+    border-color: #7a7a7a;
+    border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%237a7a7a' /></svg>");
+    background-color: #cccccc;
+    color: #919191;
+    cursor: not-allowed;
+
+    &::after {
+        -webkit-box-shadow: inset -4px -4px #b1b1b1;
+        box-shadow: inset -4px -4px #b1b1b1;
+    }
+}
+
+#ranking-list {
+    border: 1px solid #ccc;
+    border-bottom: 0px;
+    margin-top: 30px;
+    .horse {
+        display: flex;
+        align-items: stretch;
+        border-bottom: 1px solid #ccc;
+        height: 50px;
+        span:first-child {
+            flex: 0.5;
+            font-size: 32px;
+            font-style: italic;
+            color:#fff;
+             border-right: 1px solid #fff;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+        }
+        .horse-name {
+            flex: 3;
+            font-size: 20px;
+            color:#fff;
+            border-right: 1px solid #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 20px;
+            box-sizing: border-box;
+        }
+        div {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            img {
+                transform: scaleX(-1);
+                width: 180%;
+                position: absolute;
+                top: -20px;
+                left: 10px;
+            }
+        }
+    }
+}
