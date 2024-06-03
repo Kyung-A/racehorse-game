@@ -12,8 +12,7 @@ const horsesSelect = document.querySelector(".horses-select");
 
 let myHorse;
 let rankingList = [];
-let keyframes = [{ marginLeft: "0px" }, { marginLeft: "90%" }];
-const timingFuntion = ["ease", "linear", "ease-in", "ease-out", "ease-in-out"];
+let leavingOutList = [];
 
 startBtn.addEventListener("click", () => {
   startDialog.showModal();
@@ -29,15 +28,7 @@ dialogComplete.addEventListener("click", () => {
 });
 
 rankingDialogComplete.addEventListener("click", () => {
-  rankingDialog.close();
-  startBtn.removeAttribute("disabled");
-  startBtn.classList.remove("disabled-btn");
-
-  rankingList.forEach((v) => {
-    v.currentTarget.effect.target
-      .getAnimations()
-      .forEach((anim) => anim.cancel());
-  });
+  gameReset();
 });
 
 function countdown() {
@@ -58,14 +49,52 @@ function countdown() {
 }
 
 function gameStart() {
+  let keyframes = [
+    [{ marginLeft: "0px" }, { marginLeft: "90%" }],
+    [
+      { marginLeft: "0px" },
+      { marginLeft: "100px", offset: 0.5 },
+      { marginLeft: "90%" },
+    ],
+    [
+      { marginLeft: "0px" },
+      { marginLeft: "70%", offset: 0.8 },
+      { marginLeft: "90%" },
+    ],
+    [{ marginLeft: "0px" }, { marginLeft: "300px" }],
+    [
+      { marginLeft: "0px" },
+      { marginLeft: "70%", offset: 0.3 },
+      { marginLeft: "80%", offset: 0.8 },
+      { marginLeft: "90%" },
+    ],
+    [
+      { marginLeft: "0px" },
+      { marginLeft: "100px", offset: 0.3 },
+      { marginLeft: "150px", offset: 0.4 },
+      { marginLeft: "70%", offset: 0.8 },
+      { marginLeft: "90%" },
+    ],
+    [{ marginLeft: "0px" }, { marginLeft: "0px" }],
+    [{ marginLeft: "0px" }, { marginLeft: "150%" }],
+  ];
+  const timingFuntion = [
+    "ease",
+    "linear",
+    "ease-in",
+    "ease-out",
+    "ease-in-out",
+  ];
+
   const horses = document.querySelectorAll(".horses-wrapper .horse");
   startBtn.setAttribute("disabled", true);
   startBtn.classList.add("disabled-btn");
 
   horses.forEach((el) => {
-    // const randomDuration = Math.floor(Math.random() * 10000) + 9000;
-    const randomDuration = Math.floor(Math.random() * 500) + 100;
-    const randomTimingFuntion = Math.floor(Math.random() * 5);
+    const randomDuration = Math.floor(Math.random() * 10000) + 9000;
+    // const randomDuration = Math.floor(Math.random() * 500) + 100;
+    const randomNum1 = Math.floor(Math.random() * 5);
+    const randomNum2 = Math.floor(Math.random() * 8);
 
     let option = {
       duration: null,
@@ -75,12 +104,26 @@ function gameStart() {
     };
 
     option.duration = randomDuration;
-    option.timingFuntion = timingFuntion[randomTimingFuntion];
+    option.timingFuntion = timingFuntion[randomNum1];
 
-    el.animate(keyframes, option).onfinish = function (e) {
-      ranking(e);
+    el.animate(keyframes[randomNum2], option).onfinish = function (e) {
+      if (randomNum2 === 3 || randomNum2 === 6 || randomNum2 === 7) {
+        addSpeechEl(e);
+        leavingOutList.push(e);
+      } else {
+        ranking(e);
+      }
     };
   });
+}
+
+function addSpeechEl(el) {
+  const element = el.currentTarget.effect.target;
+  const textWrap = document.createElement("div");
+  textWrap.classList.add("nope-run");
+  textWrap.innerText = "안갈래";
+
+  element.appendChild(textWrap);
 }
 
 horsesSelect.addEventListener("click", (e) => {
@@ -105,37 +148,78 @@ function hideName(el) {
 function ranking(el) {
   rankingList.push(el);
 
-  if (rankingList.length === 4) {
-    const list = document.getElementById("ranking-list");
-    const title = document.querySelector("#ranking-dialog header h2");
-
-    rankingList.forEach((v, i) => {
-      const wrap = document.createElement("li");
-
-      wrap.innerHTML = `<div class="horse" aria-label="${
-        v.currentTarget.effect.target.outerText
-      }">
-        <span>${i + 1}</span>
-        <span class="horse-name">${
-          v.currentTarget.effect.target.outerText
-        }</span>
-        <div>
-          <img src="./assets/horse.png" alt="${
-            v.currentTarget.effect.target.outerText
-          }" />
-        </div>
-      </div>`;
-
-      if (i === 0) {
-        if (myHorse.ariaLabel === v.currentTarget.effect.target.ariaLabel) {
-          title.innerText = "축하드립니다. 1등입니다!";
-        } else {
-          title.innerText = "아쉽게도 졌습니다.";
-        }
-      }
-
-      list.appendChild(wrap);
-    });
+  if ([...rankingList, ...leavingOutList].length === 4) {
+    addRankingEl(rankingList, leavingOutList);
     rankingDialog.showModal();
   }
+}
+
+function addRankingEl(rankingList, leavingOutList) {
+  const list = document.getElementById("ranking-list");
+  const title = document.querySelector("#ranking-dialog header h2");
+
+  rankingList.forEach((v, i) => {
+    const wrap = document.createElement("li");
+
+    wrap.innerHTML = `<div class="horse" aria-label="${
+      v.currentTarget.effect.target.ariaLabel
+    }">
+      <span>${i + 1}</span>
+      <span class="horse-name">${v.currentTarget.effect.target.ariaLabel}</span>
+      <div>
+        <img src="./assets/horse.png" alt="${
+          v.currentTarget.effect.target.ariaLabel
+        }" />
+      </div>
+    </div>`;
+
+    if (i === 0) {
+      if (myHorse.ariaLabel === v.currentTarget.effect.target.ariaLabel) {
+        title.innerText = "축하드립니다. 1등입니다!";
+      } else {
+        title.innerText = "아쉽게도 졌습니다.";
+      }
+    }
+
+    list.appendChild(wrap);
+  });
+
+  leavingOutList.forEach((v) => {
+    const wrap = document.createElement("li");
+
+    wrap.innerHTML = `<div class="horse" aria-label="${v.currentTarget.effect.target.ariaLabel}">
+      <span style="font-size: 16px; color: #d01b00;">탈락</span>
+      <span class="horse-name">${v.currentTarget.effect.target.ariaLabel}</span>
+      <div>
+        <img src="./assets/horse.png" alt="${v.currentTarget.effect.target.ariaLabel}" />
+      </div>
+    </div>`;
+
+    list.appendChild(wrap);
+  });
+}
+
+function gameReset() {
+  rankingDialog.close();
+  startBtn.removeAttribute("disabled");
+  startBtn.classList.remove("disabled-btn");
+
+  const list = document.getElementById("ranking-list");
+  const title = document.querySelector("#ranking-dialog header h2");
+  const count = document.getElementById("count");
+  const nopeRun = document.querySelectorAll(".nope-run");
+
+  list.replaceChildren();
+  title.innerText = "";
+  count.innerText = "";
+
+  nopeRun.forEach((el) => el.remove());
+  [...rankingList, ...leavingOutList].forEach((v) => {
+    v.currentTarget.effect.target
+      .getAnimations()
+      .forEach((anim) => anim.cancel());
+  });
+
+  rankingList = [];
+  leavingOutList = [];
 }
