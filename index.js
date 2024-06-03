@@ -90,7 +90,14 @@ function gameStart() {
   startBtn.setAttribute("disabled", true);
   startBtn.classList.add("disabled-btn");
 
-  horses.forEach((el) => {
+  setTimeout(() => {
+    horses.forEach((el, i) => {
+      const img = el.children[0].children[0];
+      img.src = `./assets/horse-run${i + 1}.png`;
+    });
+  }, 4000);
+
+  horses.forEach((el, i) => {
     const randomDuration = Math.floor(Math.random() * 10000) + 9000;
     // const randomDuration = Math.floor(Math.random() * 500) + 100;
     const randomNum1 = Math.floor(Math.random() * 5);
@@ -113,6 +120,9 @@ function gameStart() {
       } else {
         ranking(e);
       }
+      const img = e.currentTarget.effect.target.children[0].children[0];
+      const imgName = e.currentTarget.effect.target.ariaLabel;
+      img.src = `./assets/${imgName}.png`;
     };
   });
 }
@@ -163,13 +173,15 @@ function addRankingEl(rankingList, leavingOutList) {
 
     wrap.innerHTML = `<div class="horse" aria-label="${
       v.currentTarget.effect.target.ariaLabel
-    }">
+    }" aria-placeholder="${v.currentTarget.effect.target.ariaPlaceholder}">
       <span>${i + 1}</span>
-      <span class="horse-name">${v.currentTarget.effect.target.ariaLabel}</span>
+      <span class="horse-name">${
+        v.currentTarget.effect.target.ariaPlaceholder
+      }</span>
       <div>
-        <img src="./assets/horse.png" alt="${
+        <img src="./assets/${
           v.currentTarget.effect.target.ariaLabel
-        }" />
+        }.png" alt="${v.currentTarget.effect.target.ariaPlaceholder}" />
       </div>
     </div>`;
 
@@ -187,11 +199,11 @@ function addRankingEl(rankingList, leavingOutList) {
   leavingOutList.forEach((v) => {
     const wrap = document.createElement("li");
 
-    wrap.innerHTML = `<div class="horse" aria-label="${v.currentTarget.effect.target.ariaLabel}">
+    wrap.innerHTML = `<div class="horse" aria-label="${v.currentTarget.effect.target.ariaLabel}" aria-placeholder="${v.currentTarget.effect.target.ariaPlaceholder}">
       <span style="font-size: 16px; color: #d01b00;">탈락</span>
-      <span class="horse-name">${v.currentTarget.effect.target.ariaLabel}</span>
+      <span class="horse-name">${v.currentTarget.effect.target.ariaPlaceholder}</span>
       <div>
-        <img src="./assets/horse.png" alt="${v.currentTarget.effect.target.ariaLabel}" />
+        <img src="./assets/${v.currentTarget.effect.target.ariaLabel}.png" alt="${v.currentTarget.effect.target.ariaPlaceholder}" />
       </div>
     </div>`;
 
