@@ -1,30 +1,40 @@
 /* 말 스타일링 */
 .horses-wrapper {
     width: 100%;
-    height: 500px;
-    min-height: 500px;
     position: relative;
-    margin-top: auto;
+    flex: 11;
     padding: 0px 20px;
     box-sizing: border-box;
-
     .horses {
         width: 100%;
         height: 100%;
-        padding-top: 50px;
     }
 }
 
 
 .horses-wrapper .horse {
     position: relative;
-    width: 90px;
-    margin: 10px 0px;
-
+    width: 6vw;
+    min-width: 80px;
+    margin: 30px 0px;
     & img {
         width: 100%;
     }
-
+    & .nope-run {
+        position: absolute;
+        top: -25px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 1.6;
+        font-weight: 600;
+        padding: 10px 10px;
+        height: 30px;
+        width: 52px;
+        background-image: url(../assets/speech-bubble.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
     & .horse-name {
         width: 50px;
         position: absolute;
@@ -35,13 +45,10 @@
         font-size: 12px;
         font-weight: 600;
         text-align: center;
-        border-color: #5b8423;
-        border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%235b8423' /></svg>");
-        background-color: #92cc41;
-        &::after {
-            -webkit-box-shadow: inset -4px -4px #77ac2e;
-            box-shadow: inset -4px -4px #77ac2e;
-        }
+        border-color: #000000;
+        border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%23000000' /></svg>");
+        background-color: #d9b908;
+        border-width: 3px;
     }
 }
 
@@ -105,10 +112,10 @@
     border-color: #a88f06;
     border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%23a88f06' /></svg>");
     background-color: #f7d51d;
-
+    border-width: 3px;
     &::after {
-        -webkit-box-shadow: inset -4px -4px #d9b908;
-        box-shadow: inset -4px -4px #d9b908;
+        -webkit-box-shadow: inset -3px -3px #d9b908;
+        box-shadow: inset -3px -3px #d9b908;
     }
 }
 
@@ -166,26 +173,29 @@
     border: 1px solid #ccc;
     border-bottom: 0px;
     margin-top: 30px;
+
     .horse {
         display: flex;
         align-items: stretch;
         border-bottom: 1px solid #ccc;
         height: 50px;
+
         span:first-child {
             flex: 0.5;
             font-size: 32px;
             font-style: italic;
-            color:#fff;
-             border-right: 1px solid #fff;
-             display: flex;
-             flex-direction: column;
-             justify-content: center;
-             align-items: center;
+            color: #fff;
+            border-right: 1px solid #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
         .horse-name {
             flex: 3;
             font-size: 20px;
-            color:#fff;
+            color: #fff;
             border-right: 1px solid #fff;
             display: flex;
             flex-direction: column;
@@ -193,10 +203,12 @@
             padding-left: 20px;
             box-sizing: border-box;
         }
+
         div {
             flex: 1;
             position: relative;
             overflow: hidden;
+
             img {
                 transform: scaleX(-1);
                 width: 180%;

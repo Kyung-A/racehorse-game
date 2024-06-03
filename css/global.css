@@ -46,6 +46,7 @@ header {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    flex: 2;
 }
 
 main {
