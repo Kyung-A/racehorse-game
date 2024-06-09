@@ -20,7 +20,11 @@ export const keyframes = [
     { marginLeft: "70%", offset: 0.8 },
     { marginLeft: "90%" },
   ],
-  [{ marginLeft: "0px" }, { marginLeft: "300px" }],
+  [
+    { marginLeft: "0px" },
+    { marginLeft: "200px", offset: 0.8 },
+    { marginLeft: "300px" },
+  ],
   [
     { marginLeft: "0px" },
     { marginLeft: "70%", offset: 0.3 },
@@ -35,7 +39,7 @@ export const keyframes = [
     { marginLeft: "90%" },
   ],
   [{ marginLeft: "0px" }, { marginLeft: "0px" }],
-  [{ marginLeft: "0px" }, { marginLeft: "150%" }],
+  [{ marginLeft: "0px" }, { marginLeft: "105%" }],
 ];
 
 export const timingFuntion = [

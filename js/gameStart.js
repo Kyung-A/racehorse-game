@@ -28,7 +28,14 @@ export default function gameStart() {
       delay: 4000,
     };
 
-    option.duration = randomDuration;
+    if (randomNum2 === 6) {
+      option.duration = 1000;
+    } else if (randomNum2 === 3) {
+      option.duration = 5000;
+    } else {
+      option.duration = randomDuration;
+    }
+
     option.timingFuntion = timingFuntion[randomNum1];
 
     el.animate(keyframes[randomNum2], option).onfinish = function (e) {
