@@ -151,7 +151,7 @@ header {
     }
 }
 
-& .dialog-btn-wrapper {
+.dialog-btn-wrapper {
     position: relative;
     z-index: 10;
     display: flex;
@@ -186,19 +186,6 @@ header {
     color: #fff;
     background-color: #00000050;
     margin: 0 auto;
-}
-
-.disabled-btn {
-    border-color: #7a7a7a;
-    border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%237a7a7a' /></svg>");
-    background-color: #cccccc;
-    color: #919191;
-    cursor: not-allowed;
-
-    &::after {
-        -webkit-box-shadow: inset -4px -4px #b1b1b1;
-        box-shadow: inset -4px -4px #b1b1b1;
-    }
 }
 
 #ranking-list {

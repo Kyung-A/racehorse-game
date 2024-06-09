@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1:1 경주게임</title>
+    <link href="./css/reset.css" rel="stylesheet" />
+    <link href="./css/global.css" rel="stylesheet" />
+    <link href="./css/oneonone.css" rel="stylesheet" />
+</head>
+
+<body>
+    <main>
+        <header>
+            <button type="button" class="pixel start-btn">경기 시작하기</button>
+        </header>
+        <div class="horses-wrapper">
+            <div class="horses">
+                <div id="pc-horse" class="horse" aria-label="horse1" aria-placeholder="PC">
+                    <div>
+                        <img src="./assets/horse1.png" alt="PC" />
+                    </div>
+                    <p class="pixel horse-name">
+                        PC
+                    </p>
+                </div>
+                <div id="my-horse" class="horse" aria-label="horse2" aria-placeholder="나">
+                    <div>
+                        <img src="./assets/horse2.png" alt="나" />
+                    </div>
+                    <p class="pixel horse-name">
+                        나
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+        <div id="count"></div>
+
+        <dialog id="result-dialog">
+            <div class="pixel">
+                <header>
+                    <h2></h2>
+                </header>
+                <div class="btn-wrapper">
+                    <button id="dialog-complete" class="pixel dialog-complete">확인</button>
+                </div>
+            </div>
+        </dialog>
+    </main>
+
+    <script type="module" src="./js/oneonone/index.js"></script>
+</body>
+
+</html>
