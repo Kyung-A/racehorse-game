@@ -1,3 +1,17 @@
+main {
+    background-image: url("../assets/bg.jpg");
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 2;
+}
+
 /* 말 스타일링 */
 .horses-wrapper {
     width: 100%;
@@ -64,6 +78,23 @@
     &::after {
         -webkit-box-shadow: inset -4px -4px #1081cb;
         box-shadow: inset -4px -4px #1081cb;
+
+    }
+}
+
+.link-btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 18px;
+    border-color: #5b8423;
+    background-color: #92cc41;
+    border-image-source: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M0 2h2v2H0zM2 0h2v2H2zM4 2h2v2H4zM2 4h2v2H2z' fill='%235b8423' /></svg>");
+    font-size: 18px;
+    cursor: pointer;
+
+    &::after {
+        -webkit-box-shadow: inset -4px -4px #77ac2e;
+        box-shadow: inset -4px -4px #77ac2e
 
     }
 }
